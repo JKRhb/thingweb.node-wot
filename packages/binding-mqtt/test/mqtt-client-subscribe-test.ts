@@ -81,7 +81,7 @@ class MqttClientSubscribeTest {
                                     if (counter === 3) {
                                         clearInterval(job);
                                     }
-                                }, 100);
+                                }, 200);
                             }
                         );
                     });

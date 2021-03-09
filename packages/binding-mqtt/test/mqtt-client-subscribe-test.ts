@@ -69,6 +69,7 @@ class MqttClientSubscribeTest {
                                 client
                                     .subscribeEvent(eventName, (x) => {
                                         expect(x).to.equal(++check);
+                                        console.info("TEST TEST TEST");
                                         if (check === 3) {
                                             done();
                                         }

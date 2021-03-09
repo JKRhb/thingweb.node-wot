@@ -42,6 +42,11 @@ class MqttClientSubscribeTest {
 
             var counter = 0;
 
+            var eventNumber = Math.floor(Math.random() * 1000000); 
+            var eventName : string = "event" + eventNumber;
+            var events : {[key: string] : any} = {};
+            events[eventName] = { type: "number" };
+
             servient.start().then((WoT) => {
                 expect(brokerServer.getPort()).to.equal(1883);
                 expect(brokerServer.getAddress()).to.equal(
@@ -50,9 +55,7 @@ class MqttClientSubscribeTest {
 
                 WoT.produce({
                     title: "TestWoTMQTT",
-                    events: {
-                        event1: { type: "number" },
-                    },
+                    events: events,
                 }).then((thing) => {
                     thing.expose().then(() => {
                         console.info(
@@ -64,7 +67,7 @@ class MqttClientSubscribeTest {
                             (client) => {
                                 let check = 0;
                                 client
-                                    .subscribeEvent("event1", (x) => {
+                                    .subscribeEvent(eventName, (x) => {
                                         expect(x).to.equal(++check);
                                         if (check === 3) {
                                             done();
@@ -77,11 +80,11 @@ class MqttClientSubscribeTest {
 
                                 var job = setInterval(() => {
                                     ++counter;
-                                    thing.emitEvent("event1", counter);
+                                    thing.emitEvent(eventName, counter);
                                     if (counter === 3) {
                                         clearInterval(job);
                                     }
-                                }, 200);
+                                }, 300);
                             }
                         );
                     });

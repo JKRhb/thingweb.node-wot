@@ -41,7 +41,8 @@ class MqttClientSubscribeTest {
         try {
             let servient = new Servient();
             var brokerAddress = process.env.mqtt_broker || "test.mosquitto.org"
-            var brokerUri = `mqtt://${brokerAddress}:1883`
+            var brokerPort = process.env.mqtt_port || 1883
+            var brokerUri = `mqtt://${brokerAddress}:${brokerPort}`
 
             let brokerServer = new MqttBrokerServer(brokerUri);
             servient.addServer(brokerServer);
@@ -53,7 +54,7 @@ class MqttClientSubscribeTest {
 
             servient.start().then((WoT) => {
                 console.log("Hi!!!");
-                expect(brokerServer.getPort()).to.equal(1883);
+                expect(brokerServer.getPort()).to.equal(brokerPort);
                 expect(brokerServer.getAddress()).to.equal(brokerAddress);
 
                 WoT.produce({

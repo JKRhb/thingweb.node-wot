@@ -14,20 +14,12 @@ jobs:
         # node-version: [10.x, 12.x, 14.x, 15.x]
         node-version: [15.x]
 
-    # services:
-    #   mosquitto:
-    #     image: eclipse-mosquitto:latest
-    #     ports:
-    #       - 1883:1883
-    #       - 9001:9001
-
-    # container: node:10.18-jessie
-
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         
       - name: Start Mosquitto
+        if: matrix.os == ubuntu-latest
         uses: namoshek/mosquitto-github-action@v1
       
       - name: Use Node.js ${{ matrix.os }} ${{ matrix.node-version }}
@@ -40,14 +32,9 @@ jobs:
       
       - name: Build
         run: npm run build
-      #   uses: namoshek/mosquitto-github-action@v1
-
-      # - name: Wait a bit until MQTT broker has started
-      #   run: sleep 30
 
       - name: Test
         run: npm run test
         env:
           matrix_os: ${{ matrix.os }}
           mqtt_broker: mosquitto
-          # mqtt_port: ${{ job.services.mosquitto.ports[1883] }}

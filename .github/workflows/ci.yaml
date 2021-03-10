@@ -15,7 +15,11 @@ jobs:
         node-version: [15.x]
 
     services:
-      - eclipse-mosquitto:1.6 # for mqtt client/server tests
+      mosquitto:
+        image: eclipse-mosquitto
+        ports:
+          - 1883:1883
+          - 9001:9001
 
     steps:
       - name: Checkout

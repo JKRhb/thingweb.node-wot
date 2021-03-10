@@ -29,7 +29,7 @@ import MqttClientFactory from "../dist/mqtt-client-factory";
 
 @suite("MQTT implementation")
 class MqttClientSubscribeTest {
-    @test "should expose via broker"(done: Function) {
+    @test.skip "should expose via broker"(done: Function) {
         try {
             let servient = new Servient();
 

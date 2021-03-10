@@ -40,4 +40,4 @@ jobs:
       - name: Test
         run: npm run test
         env:
-          matrix_os_name = ${{ matrix.os }} 
+          matrix_os_name = '${{ matrix.os }}'

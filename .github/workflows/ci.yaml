@@ -17,9 +17,23 @@ jobs:
     services:
       mosquitto:
         image: eclipse-mosquitto:latest
+        container_name: mosquitto
+        hostname: mosquitto
         ports:
           - 1883:1883
           - 9001:9001
+        volumes:
+          - ./mosquitto/data:/mosquitto/data
+          - ./mosquitto/log:/mosquitto/log
+          - ./mosquitto/config:/mosquitto/config
+        networks:
+          - cluster
+        restart: on-failure
+        healthcheck:
+          test: ["CMD-SHELL", "timeout -t 5 mosquitto_sub -t '$$SYS/#' -C 1 | grep -v Error || exit 1"]
+          interval: 10s
+          timeout: 10s
+          retries: 6
 
     container: node:10.18-jessie
 

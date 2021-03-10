@@ -34,7 +34,7 @@ class MqttClientSubscribeTest {
             let servient = new Servient();
             var brokerUri;
 
-            if (process.env.matrix.os == "ubuntu-latest") {
+            if (process.env.matrix_os == "ubuntu-latest") {
                 brokerUri = "mqtt://localhost:1883";
             } else {
                 brokerUri = "mqtt://test.mosquitto.org:1883"

@@ -15,7 +15,6 @@ jobs:
         node-version: [15.x]
 
     services:
-      if: matrix.os == 'ubuntu-latest'
       mosquitto:
         image: eclipse-mosquitto
 

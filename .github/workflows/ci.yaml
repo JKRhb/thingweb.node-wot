@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Start Mosquitto
-        if: matrix.os == "ubuntu-latest"
+        if: matrix.os == 'ubuntu-latest'
         uses: namoshek/mosquitto-github-action@v1
       
       - name: Use Node.js ${{ matrix.os }} ${{ matrix.node-version }}

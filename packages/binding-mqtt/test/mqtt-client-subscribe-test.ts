@@ -27,14 +27,11 @@ import { Servient, ExposedThing } from "@node-wot/core";
 import MqttBrokerServer from "../dist/mqtt-broker-server";
 import MqttClientFactory from "../dist/mqtt-client-factory";
 
-var osToSkip = ["windows-latest", "macos-latest"];
-
 @suite("MQTT implementation")
 class MqttClientSubscribeTest {
     @test "should expose via broker"(done: Function) {
 
-        if (osToSkip.includes(process.env.matrix_os)) {
-            console.log("Hi!!!!!!!!");
+        if (process.env.matrix_os && process.env.matrix_os != "ubuntu-latest") {
             done(); // TODO: should be replaced with a skip()
         }
 
@@ -50,10 +47,8 @@ class MqttClientSubscribeTest {
             servient.addClientFactory(new MqttClientFactory());
 
             var counter = 0;
-            console.log("Hi??");
 
             servient.start().then((WoT) => {
-                console.log("Hi!!!");
                 expect(brokerServer.getPort()).to.equal(brokerPort);
                 expect(brokerServer.getAddress()).to.equal(brokerAddress);
 
@@ -75,7 +70,6 @@ class MqttClientSubscribeTest {
                                 client
                                     .subscribeEvent("event1", (x) => {
                                         expect(x).to.equal(++check);
-                                        console.log("Hi.");
                                         if (check === 3) {
                                             done();
                                         }

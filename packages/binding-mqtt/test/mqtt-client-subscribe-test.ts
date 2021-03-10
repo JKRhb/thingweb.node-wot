@@ -49,6 +49,7 @@ class MqttClientSubscribeTest {
             servient.addClientFactory(new MqttClientFactory());
 
             var counter = 0;
+            console.log("Hi??");
 
             servient.start().then((WoT) => {
                 console.log("Hi!!!");

@@ -32,13 +32,15 @@ var osToSkip = ["windows-latest", "macos-latest"];
 @suite("MQTT implementation")
 class MqttClientSubscribeTest {
     @test "should expose via broker"(done: Function) {
+
+        if (osToSkip.includes(process.env.matrix_os)) {
+            done(); // TODO: should be replaced with a skip()
+        }
+
         try {
             let servient = new Servient();
-
-            if (osToSkip.includes(process.env.matrix_os)) {
-                done(); // TODO: should be replaced with a skip()
-            }
-            var brokerUri = process.env.mqtt_broker || "mqtt://test.mosquitto.org:1883"
+            var brokerAddress = process.env.mqtt_broker || "test.mosquitto.org"
+            var brokerUri = `mqtt://${brokerAddress}:1883`
 
             let brokerServer = new MqttBrokerServer(brokerUri);
             servient.addServer(brokerServer);
@@ -49,9 +51,7 @@ class MqttClientSubscribeTest {
 
             servient.start().then((WoT) => {
                 expect(brokerServer.getPort()).to.equal(1883);
-                expect(brokerServer.getAddress()).to.equal(
-                    "test.mosquitto.org"
-                );
+                expect(brokerServer.getAddress()).to.equal(brokerAddress);
 
                 WoT.produce({
                     title: "TestWoTMQTT",

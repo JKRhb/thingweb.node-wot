@@ -29,9 +29,16 @@ import MqttClientFactory from "../dist/mqtt-client-factory";
 
 @suite("MQTT implementation")
 class MqttClientSubscribeTest {
-    @test.skip "should expose via broker"(done: Function) {
+    @test "should expose via broker"(done: Function) {
         try {
             let servient = new Servient();
+
+            // Test if it possible to differentiate between CI and local this way
+            if (process.env.CI) {
+                console.log("CI variable is set!");
+            } else {
+                console.log("CI variable is not set!");
+            }
 
             let brokerServer = new MqttBrokerServer(
                 "mqtt://test.mosquitto.org:1883"

@@ -17,8 +17,6 @@ jobs:
     services:
       mosquitto:
         image: eclipse-mosquitto:latest
-        container_name: mosquitto
-        hostname: mosquitto
         ports:
           - 1883:1883
           - 9001:9001

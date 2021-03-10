@@ -32,17 +32,16 @@ class MqttClientSubscribeTest {
     @test "should expose via broker"(done: Function) {
         try {
             let servient = new Servient();
+            var brokerUri;
 
             // Test if it possible to differentiate between CI and local this way
             if (process.env.CI) {
-                console.log("CI variable is set!");
+                brokerUri = "mqtt://localhost:1883";
             } else {
-                console.log("CI variable is not set!");
+                brokerUri = "mqtt://test.mosquitto.org:1883"
             }
 
-            let brokerServer = new MqttBrokerServer(
-                "mqtt://test.mosquitto.org:1883"
-            );
+            let brokerServer = new MqttBrokerServer(brokerUri);
             servient.addServer(brokerServer);
 
             servient.addClientFactory(new MqttClientFactory());

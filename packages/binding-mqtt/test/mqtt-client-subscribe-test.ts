@@ -27,22 +27,18 @@ import { Servient, ExposedThing } from "@node-wot/core";
 import MqttBrokerServer from "../dist/mqtt-broker-server";
 import MqttClientFactory from "../dist/mqtt-client-factory";
 
-var osSkipList = ["windows-latest", "macos-latest"];
+var osToSkip = ["windows-latest", "macos-latest"];
 
 @suite("MQTT implementation")
 class MqttClientSubscribeTest {
     @test "should expose via broker"(done: Function) {
         try {
             let servient = new Servient();
-            var brokerUri;
 
-            if (process.env.matrix_os == "ubuntu-latest") {
-                brokerUri = "mqtt://localhost:1883";
-            } else if (osSkipList.includes(process.env.matrix_os)) {
+            if (osToSkip.includes(process.env.matrix_os)) {
                 done(); // TODO: should be replaced with a skip()
-            } else {
-                brokerUri = "mqtt://test.mosquitto.org:1883";
             }
+            var brokerUri = process.env.mqtt_broker || "mqtt://test.mosquitto.org:1883"
 
             let brokerServer = new MqttBrokerServer(brokerUri);
             servient.addServer(brokerServer);

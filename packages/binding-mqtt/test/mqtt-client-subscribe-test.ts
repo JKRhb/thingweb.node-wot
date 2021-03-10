@@ -34,6 +34,7 @@ class MqttClientSubscribeTest {
     @test "should expose via broker"(done: Function) {
 
         if (osToSkip.includes(process.env.matrix_os)) {
+            console.log("Hi!!!!!!!!");
             done(); // TODO: should be replaced with a skip()
         }
 
@@ -50,6 +51,7 @@ class MqttClientSubscribeTest {
             var counter = 0;
 
             servient.start().then((WoT) => {
+                console.log("Hi!!!");
                 expect(brokerServer.getPort()).to.equal(1883);
                 expect(brokerServer.getAddress()).to.equal(brokerAddress);
 
@@ -71,6 +73,7 @@ class MqttClientSubscribeTest {
                                 client
                                     .subscribeEvent("event1", (x) => {
                                         expect(x).to.equal(++check);
+                                        console.log("Hi.");
                                         if (check === 3) {
                                             done();
                                         }

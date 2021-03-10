@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: Start Mosquitto
+      - name: Start Mosquitto (for MQTT tests on ubuntu-latest)
         if: matrix.os == 'ubuntu-latest'
         uses: namoshek/mosquitto-github-action@v1
       

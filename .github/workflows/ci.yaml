@@ -12,23 +12,25 @@ jobs:
         # os: [macos-latest, ubuntu-latest, windows-latest]
         os: [ubuntu-latest]
         # node-version: [10.x, 12.x, 14.x, 15.x]
-        node-version: [15.x]
+        # node-version: [15.x]
 
     services:
       mosquitto:
-        image: eclipse-mosquitto
+        image: eclipse-mosquitto:latest
         ports:
           - 1883:1883
           - 9001:9001
+
+    container: node:10.18-jessie
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2        
       
-      - name: Use Node.js ${{ matrix.os }} ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-            node-version: ${{ matrix.node-version }}
+      # - name: Use Node.js ${{ matrix.os }} ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v1
+      #   with:
+      #       node-version: ${{ matrix.node-version }}
       
       - name: Install
         run: npm install
@@ -46,4 +48,3 @@ jobs:
           matrix_os: ${{ matrix.os }}
           mqtt_broker: mosquitto
           mqtt_port: ${{ job.services.mosquitto.ports[1883] }}
-          MOSQUITTO_PORT: ${{ job.services.mosquitto.ports[1883] }}

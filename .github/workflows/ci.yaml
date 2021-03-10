@@ -14,13 +14,14 @@ jobs:
         # node-version: [10.x, 12.x, 14.x, 15.x]
         node-version: [15.x]
 
+    services:
+      mosquitto:
+        image: eclipse-mosquitto
+        if: matrix.os == 'ubuntu-latest'
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Start Mosquitto (for MQTT tests)
-        uses: docker://eclipse-mosquitto
-        if: matrix.os == 'ubuntu-latest'
+        uses: actions/checkout@v2        
       
       - name: Use Node.js ${{ matrix.os }} ${{ matrix.node-version }}
         uses: actions/setup-node@v1

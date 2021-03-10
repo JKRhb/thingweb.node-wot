@@ -34,7 +34,6 @@ class MqttClientSubscribeTest {
             let servient = new Servient();
             var brokerUri;
 
-            // Test if it possible to differentiate between CI and local this way
             if (process.env.CI) {
                 brokerUri = "mqtt://localhost:1883";
             } else {

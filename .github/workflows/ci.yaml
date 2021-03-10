@@ -11,8 +11,8 @@ jobs:
       matrix:
         # os: [macos-latest, ubuntu-latest, windows-latest]
         os: [ubuntu-latest]
-        node-version: [10.x, 12.x, 14.x, 15.x]
-        # node-version: [15.x]
+        # node-version: [10.x, 12.x, 14.x, 15.x]
+        node-version: [15.x]
 
     services:
       mosquitto:
@@ -46,5 +46,5 @@ jobs:
         run: npm run test
         env:
           matrix_os: ${{ matrix.os }}
-          mqtt_broker: localhost
+          mqtt_broker: mosquitto
           # mqtt_port: ${{ job.services.mosquitto.ports[1883] }}

@@ -44,4 +44,4 @@ jobs:
         run: npm run test
         env:
           matrix_os: ${{ matrix.os }}
-          mqtt_broker: "mosquitto"
+          mqtt_broker: localhost

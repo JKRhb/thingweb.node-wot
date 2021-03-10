@@ -20,6 +20,8 @@ jobs:
         ports:
           - 1883:1883
           - 9001:9001
+        env:
+          MOSQUITTO_PORT: ${{ job.services.mosquitto.ports[1883] }}
 
     steps:
       - name: Checkout

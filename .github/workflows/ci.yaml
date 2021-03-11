@@ -23,13 +23,13 @@ jobs:
         uses: namoshek/mosquitto-github-action@v1
         
       - name: Test connecting to mosquitto
-        run: curl test.mosquitto.com
+        run: curl test.mosquitto.org
         
       - name: Test connecting to mosquitto
         run: |
           sudo apt-get update
-          sudo apt-get install mosquitto
           sudo apt-get install mosquitto-clients
+          mosquitto_sub -h test.mosquitto.org -t test
 
       - name: Use Node.js ${{ matrix.os }} ${{ matrix.node-version }}
         uses: actions/setup-node@v1

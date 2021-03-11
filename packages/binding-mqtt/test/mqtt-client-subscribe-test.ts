@@ -54,11 +54,14 @@ class MqttClientSubscribeTest {
                 expect(brokerServer.getPort()).to.equal(brokerPort);
                 expect(brokerServer.getAddress()).to.equal(brokerAddress);
 
+                var eventNumber = Math.floor(Math.random() * 1000000); 
+                var eventName : string = "event" + eventNumber;
+                var events : {[key: string] : any} = {};
+                events[eventName] = { type: "number" };
+
                 WoT.produce({
                     title: "TestWoTMQTT",
-                    events: {
-                        event1: { type: "number" },
-                    },
+                    events: events,
                 }).then((thing) => {
                     thing.expose().then(() => {
                         console.info(

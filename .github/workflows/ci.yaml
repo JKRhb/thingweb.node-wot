@@ -24,7 +24,13 @@ jobs:
         
       - name: Test connecting to mosquitto
         run: curl test.mosquitto.com
-      
+        
+      - name: Test connecting to mosquitto
+        run: |
+          apt update
+          apt install mosquitto-clients
+          mosquitto_sub -h mosquitto -t test
+
       - name: Use Node.js ${{ matrix.os }} ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:

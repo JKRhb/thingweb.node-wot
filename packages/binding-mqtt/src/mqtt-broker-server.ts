@@ -96,7 +96,7 @@ export default class MqttBrokerServer implements ProtocolServer {
       }
     }
 
-    console.debug("[binding-mqtt]",`MqttBrokerServer at ${this.brokerURI} exposes '${thing.title}' as unique '/${name}/*'`);
+    console.debug("[binding-mqtt]",`MqttBrokerServer at ${this.brokerURI} exposes '${thing.title}' as unique 'clear${name}/*'`);
     return new Promise<void>((resolve, reject) => {
 
       // TODO clean-up on destroy and stop
@@ -267,7 +267,7 @@ export default class MqttBrokerServer implements ProtocolServer {
         event.forms.push(form);
         console.debug("[binding-mqtt]",`MqttBrokerServer at ${this.brokerURI} assigns '${href}' to Event '${eventName}'`);
       }
-      this.broker.publish("/"+name, JSON.stringify(thing.getThingDescription()),{retain:true,contentType:"application/td+json"});
+      this.broker.publish(name, JSON.stringify(thing.getThingDescription()),{retain:true,contentType:"application/td+json"});
       resolve();
     });
   }

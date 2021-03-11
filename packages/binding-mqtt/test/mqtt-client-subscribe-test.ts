@@ -39,8 +39,8 @@ class MqttClientSubscribeTest {
 
         try {
             let servient = new Servient();
-            var brokerAddress = process.env.mqtt_broker || "test.mosquitto.org"
-            var brokerPort = process.env.mqtt_port || 1883
+            var brokerAddress = "test.mosquitto.org"
+            var brokerPort = 1883
             var brokerUri = `mqtt://${brokerAddress}:${brokerPort}`
 
             let brokerServer = new MqttBrokerServer(brokerUri);

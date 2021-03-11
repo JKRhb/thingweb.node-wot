@@ -27,7 +27,7 @@ import { Servient, ExposedThing } from "@node-wot/core";
 import MqttBrokerServer from "../dist/mqtt-broker-server";
 import MqttClientFactory from "../dist/mqtt-client-factory";
 
-@suite("MQTT implementation")
+@suite("MQTT implementation", timeout(5000))
 class MqttClientSubscribeTest {
 
     // FIXME: Cannot connect to MQTT broker in the CI pipeline at the moment

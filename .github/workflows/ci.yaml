@@ -27,8 +27,8 @@ jobs:
         
       - name: Test connecting to mosquitto
         run: |
-          apt update
-          apt install mosquitto-clients
+          sudo apt-get update
+          sudo apt-get install mosquitto-clients
           mosquitto_sub -h mosquitto -t test
 
       - name: Use Node.js ${{ matrix.os }} ${{ matrix.node-version }}

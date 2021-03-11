@@ -31,7 +31,7 @@ import MqttClientFactory from "../dist/mqtt-client-factory";
 class MqttClientSubscribeTest {
 
     // FIXME: Cannot connect to MQTT broker in the CI pipeline at the moment
-    @test "should expose via broker"(done: Function) {
+    @test.only "should expose via broker"(done: Function) {
 
         // if (process.env.matrix_os && process.env.matrix_os != "ubuntu-latest") {
         //     done(); // TODO: should be replaced with a skip()

@@ -30,7 +30,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install mosquitto
           sudo apt-get install mosquitto-clients
-          mosquitto_sub -h localhost -t test
 
       - name: Use Node.js ${{ matrix.os }} ${{ matrix.node-version }}
         uses: actions/setup-node@v1

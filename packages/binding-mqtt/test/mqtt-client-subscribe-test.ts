@@ -73,7 +73,7 @@ class MqttClientSubscribeTest {
                             (client) => {
                                 let check = 0;
                                 client
-                                    .subscribeEvent("event1", (x) => {
+                                    .subscribeEvent(eventName, (x) => {
                                         expect(x).to.equal(++check);
                                         if (check === 3) {
                                             done();
@@ -86,7 +86,7 @@ class MqttClientSubscribeTest {
 
                                 var job = setInterval(() => {
                                     ++counter;
-                                    thing.emitEvent("event1", counter);
+                                    thing.emitEvent(eventName, counter);
                                     if (counter === 3) {
                                         clearInterval(job);
                                     }

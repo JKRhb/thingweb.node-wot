@@ -27,11 +27,11 @@ import { Servient, ExposedThing } from "@node-wot/core";
 import MqttBrokerServer from "../dist/mqtt-broker-server";
 import MqttClientFactory from "../dist/mqtt-client-factory";
 
-@suite("MQTT implementation", timeout(10000))
+@suite("MQTT implementation")
 class MqttClientSubscribeTest {
 
     // FIXME: Cannot connect to MQTT broker in the CI pipeline at the moment
-    @test.only "should expose via broker"(done: Function) {
+    @test(timeout(5000)) "should expose via broker"(done: Function) {
 
         // if (process.env.matrix_os && process.env.matrix_os != "ubuntu-latest") {
         //     done(); // TODO: should be replaced with a skip()
@@ -90,7 +90,7 @@ class MqttClientSubscribeTest {
                                     if (counter === 3) {
                                         clearInterval(job);
                                     }
-                                }, 100);
+                                }, 300);
                             }
                         );
                     });

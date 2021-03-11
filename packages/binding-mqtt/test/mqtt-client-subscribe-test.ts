@@ -33,9 +33,9 @@ class MqttClientSubscribeTest {
     // FIXME: Cannot connect to MQTT broker in the CI pipeline at the moment
     @test "should expose via broker"(done: Function) {
 
-        if (process.env.matrix_os && process.env.matrix_os != "ubuntu-latest") {
-            done(); // TODO: should be replaced with a skip()
-        }
+        // if (process.env.matrix_os && process.env.matrix_os != "ubuntu-latest") {
+        //     done(); // TODO: should be replaced with a skip()
+        // }
 
         try {
             let servient = new Servient();

@@ -10,26 +10,11 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
-        # node-version: [10.x, 12.x, 14.x, 15.x]
-        # os: [ubuntu-latest]
         node-version: [10.x, 12.x, 14.x, 15.x]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
-      # - name: Start Mosquitto (for MQTT tests on ubuntu-latest)
-      #   if: matrix.os == 'ubuntu-latest'
-      #   uses: namoshek/mosquitto-github-action@v1
-        
-      # - name: Test connecting to mosquitto
-      #   run: curl test.mosquitto.org
-        
-      # - name: Test connecting to mosquitto
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt-get install mosquitto-clients
-      #     mosquitto_pub -h test.mosquitto.org -t test -m "hello world"
 
       - name: Use Node.js ${{ matrix.os }} ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -44,6 +29,3 @@ jobs:
 
       - name: Test
         run: npm run test
-        env:
-          matrix_os: ${{ matrix.os }}
-          # mqtt_broker: mosquitto

@@ -29,7 +29,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install mosquitto-clients
-          mosquitto_sub -h test.mosquitto.org -t test
+          mosquitto_pub -h test.mosquitto.org -t test -m "hello world"
 
       - name: Use Node.js ${{ matrix.os }} ${{ matrix.node-version }}
         uses: actions/setup-node@v1

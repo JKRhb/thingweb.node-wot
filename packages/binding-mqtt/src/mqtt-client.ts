@@ -45,6 +45,7 @@ export default class MqttClient implements ProtocolClient {
         let contentType = form.contentType;
         let retain = form["mqtt:retain"]; // TODO: is this needed here?
         let qos = form["mqtt:qos"]; // TODO: is this needed here?
+        console.log(form["href"])
         let requestUri = url.parse(form['href']);
         let topic = requestUri.pathname.slice(1);
         let brokerUri: String = `${this.scheme}://${requestUri.host}`;

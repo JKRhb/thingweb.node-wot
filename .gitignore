@@ -53,6 +53,7 @@ packages/*
 !packages/binding-websockets
 !packages/binding-mqtt
 !packages/binding-modbus
+!packages/binding-ndn
 !packages/binding-opcua
 !packages/binding-netconf
 !packages/binding-modbus

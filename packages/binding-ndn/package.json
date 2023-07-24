@@ -1,0 +1,12 @@
+{
+  "name": "binding-ndn",
+  "version": "0.8.8",
+  "description": "Named-Data Networking protocol binding for node-wot",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jan Romann",
+  "license": "EPL-2.0 OR W3C-20150513"
+}

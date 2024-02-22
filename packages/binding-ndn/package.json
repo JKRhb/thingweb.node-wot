@@ -1,18 +1,31 @@
 {
-  "name": "binding-ndn",
-  "version": "0.8.8",
+  "name": "@node-wot/binding-ndn",
+  "version": "0.8.13",
   "description": "Named-Data Networking protocol binding for node-wot",
-  "main": "index.js",
+  "author": "Eclipse Thingweb <thingweb-dev@eclipse.org> (https://thingweb.io/)",
+  "license": "EPL-2.0 OR W3C-20150513",
+  "main": "dist/ndn.js",
+  "types": "dist/ndn.d.ts",
   "dependencies": {
+    "@node-wot/core": "0.8.13",
+    "@node-wot/td-tools": "0.8.13",
     "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
     "@ndn/endpoint": "https://ndnts-nightly.ndn.today/endpoint.tgz",
     "@ndn/packet": "https://ndnts-nightly.ndn.today/packet.tgz",
     "@ndn/util": "https://ndnts-nightly.ndn.today/util.tgz"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": "https://github.com/eclipse-thingweb/node-wot/tree/master/packages/binding-mqtt",
+  "publishConfig": {
+      "access": "public"
   },
-  "author": "Eclipse Thingweb <thingweb-dev@eclipse.org> (https://thingweb.io/)",
-  "license": "EPL-2.0 OR W3C-20150513"
+  "files": [
+      "dist/"
+  ],
+  "scripts": {
+      "build": "tsc -b",
+      "test": "mocha --require ts-node/register --extension ts",
+      "lint": "eslint .",
+      "lint:fix": "eslint . --fix",
+      "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"**/*.json\""
+  }
 }

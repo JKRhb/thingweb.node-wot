@@ -3,10 +3,16 @@
   "version": "0.8.8",
   "description": "Named-Data Networking protocol binding for node-wot",
   "main": "index.js",
+  "dependencies": {
+    "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
+    "@ndn/endpoint": "https://ndnts-nightly.ndn.today/endpoint.tgz",
+    "@ndn/packet": "https://ndnts-nightly.ndn.today/packet.tgz",
+    "@ndn/util": "https://ndnts-nightly.ndn.today/util.tgz"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jan Romann",
+  "author": "Eclipse Thingweb <thingweb-dev@eclipse.org> (https://thingweb.io/)",
   "license": "EPL-2.0 OR W3C-20150513"
 }

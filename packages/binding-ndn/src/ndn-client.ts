@@ -12,3 +12,50 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR W3C-20150513
  ********************************************************************************/
+
+import { ProtocolClient, Content, DefaultContent, createLoggers, ContentSerdes } from "@node-wot/core";
+import { Form, SecurityScheme } from "@node-wot/td-tools";
+import { Subscription } from "rxjs/Subscription";
+
+export default class NdnClient implements ProtocolClient {
+    readResource(form: Form): Promise<Content> {
+        throw new Error("Method not implemented.");
+    }
+
+    writeResource(form: Form, content: Content): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+
+    invokeResource(form: Form, content?: Content | undefined): Promise<Content> {
+        throw new Error("Method not implemented.");
+    }
+
+    unlinkResource(form: Form): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+
+    subscribeResource(
+        form: Form,
+        next: (content: Content) => void,
+        error?: ((error: Error) => void) | undefined,
+        complete?: (() => void) | undefined
+    ): Promise<Subscription> {
+        throw new Error("Method not implemented.");
+    }
+
+    requestThingDescription(uri: string): Promise<Content> {
+        throw new Error("Method not implemented.");
+    }
+
+    start(): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+
+    stop(): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+
+    setSecurity(metadata: SecurityScheme[], credentials?: unknown): boolean {
+        throw new Error("Method not implemented.");
+    }
+}

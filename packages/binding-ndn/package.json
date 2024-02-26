@@ -7,12 +7,13 @@
     "main": "dist/ndn.js",
     "types": "dist/ndn.d.ts",
     "dependencies": {
-        "@node-wot/core": "0.8.13",
-        "@node-wot/td-tools": "0.8.13",
         "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
         "@ndn/endpoint": "https://ndnts-nightly.ndn.today/endpoint.tgz",
+        "@ndn/node-transport": "https://ndnts-nightly.ndn.today/node-transport.tgz",
         "@ndn/packet": "https://ndnts-nightly.ndn.today/packet.tgz",
-        "@ndn/util": "https://ndnts-nightly.ndn.today/util.tgz"
+        "@ndn/util": "https://ndnts-nightly.ndn.today/util.tgz",
+        "@node-wot/core": "0.8.13",
+        "@node-wot/td-tools": "0.8.13"
     },
     "repository": "https://github.com/eclipse-thingweb/node-wot/tree/master/packages/binding-mqtt",
     "publishConfig": {

@@ -13,11 +13,27 @@
  * SPDX-License-Identifier: EPL-2.0 OR W3C-20150513
  ********************************************************************************/
 
-import { ProtocolClient, Content, DefaultContent, createLoggers, ContentSerdes } from "@node-wot/core";
+// import { connectToRouter } from "@ndn/autoconfig";
+// import { Endpoint } from "@ndn/endpoint";
+import { ProtocolClient, Content, createLoggers,
+    // DefaultContent, ContentSerdes
+ } from "@node-wot/core";
+import { UnixTransport } from "@ndn/node-transport";
 import { Form, SecurityScheme } from "@node-wot/td-tools";
 import { Subscription } from "rxjs/Subscription";
 
+const { debug } = createLoggers("binding-ndn", "ndn-client");
+
 export default class NdnClient implements ProtocolClient {
+    // #endpoint: Endpoint;
+
+    #transport?: UnixTransport;
+
+    // constructor() {
+    //     // this.#endpoint = new Endpoint();
+    //     // this.#transport = new UnixTransport();
+    // }
+
     readResource(form: Form): Promise<Content> {
         throw new Error("Method not implemented.");
     }
@@ -47,12 +63,16 @@ export default class NdnClient implements ProtocolClient {
         throw new Error("Method not implemented.");
     }
 
-    start(): Promise<void> {
-        throw new Error("Method not implemented.");
+   async start(): Promise<void> {
+
+        // this.#endpoint = new Endpoint();
+        // const blah = await connectToRouter("unix://");
+        this.#transport = await UnixTransport.connect("/run/nfd/nfd.sock")
     }
 
-    stop(): Promise<void> {
-        throw new Error("Method not implemented.");
+    async stop(): Promise<void> {
+
+        // this.#endpoint
     }
 
     setSecurity(metadata: SecurityScheme[], credentials?: unknown): boolean {

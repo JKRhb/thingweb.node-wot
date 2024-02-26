@@ -13,4 +13,22 @@
  * SPDX-License-Identifier: EPL-2.0 OR W3C-20150513
  ********************************************************************************/
 
-export { default as NdnClient } from "./ndn-client";
+import { ProtocolClientFactory, ProtocolClient, createLoggers } from "@node-wot/core";
+
+const { debug } = createLoggers("binding-ndn", "ndn-client-factory");
+
+export default class NdnClientFactory implements ProtocolClientFactory {
+    get scheme() {return "ndn"} ;
+
+    getClient(): ProtocolClient {
+        throw new Error("Method not implemented.");
+    }
+
+    init(): boolean {
+        throw new Error("Method not implemented.");
+    }
+
+    destroy(): boolean {
+        throw new Error("Method not implemented.");
+    }
+}

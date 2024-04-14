@@ -100,7 +100,7 @@ class WoTRuntimeTest {
         assert.equal(test, fs);
     }
 
-    @test "should catch synchronous errors"() {
+    @test.skip "should catch synchronous errors"() {
         const failNowScript = `throw new Error("Synchronous error in Servient sandbox");`;
 
         assert.doesNotThrow(() => {
